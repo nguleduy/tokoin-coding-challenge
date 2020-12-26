@@ -40,8 +40,30 @@ public class UserServiceImpl implements UserService {
           return userRepo.stream().filter(item -> item.getExternalId().equalsIgnoreCase(value)).map(item -> findUserById(orgRepo, ticketRepo, userRepo, item.getId())).collect(Collectors.toList());
         case "name":
           return userRepo.stream().filter(item -> item.getName().equalsIgnoreCase(value)).map(item -> findUserById(orgRepo, ticketRepo, userRepo, item.getId())).collect(Collectors.toList());
+        case "alias":
+          return userRepo.stream().filter(item -> item.getAlias().equalsIgnoreCase(value)).map(item -> findUserById(orgRepo, ticketRepo, userRepo, item.getId())).collect(Collectors.toList());
         case "created_at":
           return userRepo.stream().filter(item -> item.getCreatedAt().equalsIgnoreCase(value)).map(item -> findUserById(orgRepo, ticketRepo, userRepo, item.getId())).collect(Collectors.toList());
+        case "active":
+          return userRepo.stream().filter(item -> item.getActive() == Boolean.valueOf(value)).map(item -> findUserById(orgRepo, ticketRepo, userRepo, item.getId())).collect(Collectors.toList());
+        case "verified":
+          return userRepo.stream().filter(item -> item.getVerified() == Boolean.valueOf(value)).map(item -> findUserById(orgRepo, ticketRepo, userRepo, item.getId())).collect(Collectors.toList());
+        case "shared":
+          return userRepo.stream().filter(item -> item.getShared() == Boolean.valueOf(value)).map(item -> findUserById(orgRepo, ticketRepo, userRepo, item.getId())).collect(Collectors.toList());
+        case "locale":
+          return userRepo.stream().filter(item -> item.getLocale().equalsIgnoreCase(value)).map(item -> findUserById(orgRepo, ticketRepo, userRepo, item.getId())).collect(Collectors.toList());
+        case "timezone":
+          return userRepo.stream().filter(item -> item.getTimezone().equalsIgnoreCase(value)).map(item -> findUserById(orgRepo, ticketRepo, userRepo, item.getId())).collect(Collectors.toList());
+        case "last_login_at":
+          return userRepo.stream().filter(item -> item.getLastLoginAt().equalsIgnoreCase(value)).map(item -> findUserById(orgRepo, ticketRepo, userRepo, item.getId())).collect(Collectors.toList());
+        case "email":
+          return userRepo.stream().filter(item -> item.getEmail().equalsIgnoreCase(value)).map(item -> findUserById(orgRepo, ticketRepo, userRepo, item.getId())).collect(Collectors.toList());
+        case "phone":
+          return userRepo.stream().filter(item -> item.getPhone().equalsIgnoreCase(value)).map(item -> findUserById(orgRepo, ticketRepo, userRepo, item.getId())).collect(Collectors.toList());
+        case "signature":
+          return userRepo.stream().filter(item -> item.getSignature().equalsIgnoreCase(value)).map(item -> findUserById(orgRepo, ticketRepo, userRepo, item.getId())).collect(Collectors.toList());
+        case "organization_id":
+          return userRepo.stream().filter(item -> item.getOrganizationId() == Integer.valueOf(value)).map(item -> findUserById(orgRepo, ticketRepo, userRepo, item.getId())).collect(Collectors.toList());
         case "tags":
           List<User> tags = new ArrayList<>();
           for (User user : userRepo) {
@@ -52,6 +74,10 @@ public class UserServiceImpl implements UserService {
             }
           }
           return tags.stream().map(item -> findUserById(orgRepo, ticketRepo, userRepo, item.getId())).collect(Collectors.toList());
+        case "suspended":
+          return userRepo.stream().filter(item -> item.getSuspended() == Boolean.valueOf(value)).map(item -> findUserById(orgRepo, ticketRepo, userRepo, item.getId())).collect(Collectors.toList());
+        case "role":
+          return userRepo.stream().filter(item -> item.getRole().equalsIgnoreCase(value)).map(item -> findUserById(orgRepo, ticketRepo, userRepo, item.getId())).collect(Collectors.toList());
         default:
           return Collections.EMPTY_LIST;
       }
