@@ -44,9 +44,9 @@ The app is developed with serveral packages:
 
 To build application via cmd: **gradle clean build**
 
-###Solution:
+###Solution
 Read json files, parse data to object then hold them to List (called repository in this app) and do search via *id* or *key/value*
 
-###QnA:
+###QnA
 - About **HELP** section, I could not run it on Windows OS so I do not know what are inside that file then I followed my test based on *instruction.pdf* file.
 - I wondered that how can I search with array attribute (e.g domain_names and tags in organization.json), do search with full array or item in array ? I selected option 2: search for item in array.
