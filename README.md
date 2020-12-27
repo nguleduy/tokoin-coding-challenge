@@ -44,6 +44,8 @@ The app is developed with serveral packages:
 
 To build application via cmd: **gradle clean build**
 
+To run application via cmd: **java -jar tokoin-0.0.1-SNAPSHOT.jar**
+
 ### Solution
 Read json files, parse data to object then hold them to List (called repository in this app) and do search via *id* or *key/value*
 
