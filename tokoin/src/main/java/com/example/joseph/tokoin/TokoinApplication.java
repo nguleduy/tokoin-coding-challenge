@@ -63,6 +63,13 @@ public class TokoinApplication implements CommandLineRunner {
     this.tokoin();
   }
 
+  private void showTermValue(Scanner scanner) {
+    System.out.println(SEARCH_TERM);
+    searchTerm = scanner.next();
+    System.out.println(SEARCH_VALUE);
+    searchValue = scanner.next();
+  }
+
   private void tokoin() {
     System.out.println(INTRODUCTION_MSG);
     Scanner scanner = new Scanner(System.in);
@@ -74,39 +81,37 @@ public class TokoinApplication implements CommandLineRunner {
           int key = scanner.nextInt();
           if (key == 1) {
             // Users
-            System.out.println(SEARCH_TERM);
-            searchTerm = scanner.next();
-            System.out.println(SEARCH_VALUE);
-            searchValue = scanner.next();
+            showTermValue(scanner);
+            System.out.println("Searching users for " + searchTerm + " with a value of " + searchValue);
             var result = userService.findUserBySearchable(organizations, tickets, users, searchTerm, searchValue);
             if (result.size() == 0) {
               System.out.println("No results found");
             }
             result.stream().forEach(System.out::println);
+            System.out.println("-------------------------------------");
+            System.out.println(INTRODUCTION_MSG);
           } else if (key == 2) {
             // Tickets
-            System.out.println(SEARCH_TERM);
-            searchTerm = scanner.next();
-            System.out.println(SEARCH_VALUE);
-            searchValue = scanner.next();
+            showTermValue(scanner);
             System.out.println("Searching tickets for " + searchTerm + " with a value of " + searchValue);
             var result = ticketService.findTicketBySearchable(organizations, tickets, users, searchTerm, searchValue);
             if (result.size() == 0) {
               System.out.println("No results found");
             }
             result.stream().forEach(System.out::println);
+            System.out.println("-------------------------------------");
+            System.out.println(INTRODUCTION_MSG);
           } else if (key == 3) {
             // Organizations
-            System.out.println(SEARCH_TERM);
-            searchTerm = scanner.next();
-            System.out.println(SEARCH_VALUE);
-            searchValue = scanner.next();
+            showTermValue(scanner);
             System.out.println("Searching organizations for " + searchTerm + " with a value of " + searchValue);
             var result = organizationService.findOrganizationBySearchable(organizations, tickets, users, searchTerm, searchValue);
             if (result.size() == 0) {
               System.out.println("No results found");
             }
             result.stream().forEach(System.out::println);
+            System.out.println("-------------------------------------");
+            System.out.println(INTRODUCTION_MSG);
           }
         } else if (option == 2) {
           System.out.println("-------------------------------------");
@@ -118,6 +123,8 @@ public class TokoinApplication implements CommandLineRunner {
           System.out.println("-------------------------------------");
           System.out.println("Search Organizations with");
           Arrays.stream(ORGANIZATION_SEARCHABLE).forEach(System.out::println);
+          System.out.println("-------------------------------------");
+          System.out.println(INTRODUCTION_MSG);
         }
       } else if (scanner.hasNext()) {
         String quit = scanner.next();
