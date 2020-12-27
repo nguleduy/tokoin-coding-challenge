@@ -13,8 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
-import uk.co.jemos.podam.api.PodamFactory;
-import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +29,6 @@ public class OrganizationServiceTest {
   @Autowired
   OrganizationService organizationService;
 
-  private PodamFactory podam = new PodamFactoryImpl();
   private List<Organization> organizations = new ArrayList<>();
   private List<Ticket> tickets = new ArrayList<>();
   private List<User> users = new ArrayList<>();
@@ -39,7 +36,6 @@ public class OrganizationServiceTest {
 
   @Before
   public void setUp() {
-    organization = podam.manufacturePojo(Organization.class);
     organization.setId(116);
     organization.setUrl("http://initech.tokoin.io.com/api/v2/organizations/116.json");
     organization.setExternalId("dbc692fc-e1ae-47d8-a1d7-263d07710fe1");
